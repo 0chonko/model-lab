@@ -54,13 +54,25 @@ The rank sweep uses one seed and 12 held-out synthetic examples. The exact punct
 
 ## Recorded catalog runs
 
-On the same 93-row clean evaluation set, the prompted LFM2-700M baseline scored 0 exact matches. The first adapter scored 47, extending training context to 1,536 scored 50, and raising rank to 16 scored 55. The hard-case oversampling and epoch change scored 53. A subsequent run targeting extra MLP projections scored 56. The same recipe trained on clean data scored 71.
+The library migration needs one record per reference. These runs trained on about 840 hand-checked catalog rows or their paired OCR-noisy variants. The mixed-data run added 131 reconstructed long catalogs. The same 93 clean validation rows were reused across configurations and checkpoint selection.
 
-A later 700M run on an RTX 3060 Ti mixed clean and reconstructed pages and scored 82/93 in one clean evaluation dump. A separate dump scored 71/93 on the clean slice and 0/8 on the reconstructed slice it covered. The reconstructed slice covered only 8 of 23 prepared evaluation rows. A separate LFM3-1.7B run reached 81/93, while its longer-context variant reached 75/93. These are local task results with several co-varying settings, so use a fixed split and equal budgets to attribute changes in a new run.
+| Training recipe | Final exact | Best exact | Final exact for 5–7 spans |
+| --- | ---: | ---: | ---: |
+| Prompted LFM2-700M | 0/93 | — | 0/32 |
+| Noisy LFM2 baseline | 64/93 | 66/93 | 16/32 |
+| Noisy, longer context | 61/93 | 62/93 | 15/32 |
+| Noisy, rank 16 | 66/93 | 66/93 | 17/32 |
+| Noisy, oversampled hard rows | 66/93 | 73/93 | 19/32 |
+| Noisy, extra MLP projections | 69/93 | 74/93 | 20/32 |
+| Clean, same MLP recipe | 71/93 | 75/93 | 20/32 |
+| Clean LFM3-1.7B | 81/93 | 84/93 | 29/32 |
+| Mixed clean and long catalogs, LFM2-700M | 82/93 | 83/93 | 29/32 |
 
-Use the learned tagger and punctuation rules as controls. The synthetic corpus has a consistent boundary cue, so perfect scores there show the mechanics of the evaluation. Real OCR can merge punctuation with tokens, drop separators, and introduce unseen formats.
+The final scores come from the blog’s unified re-score. The old parser treated the leading `12.` in `12. Jahrhundert` as list numbering and could drop it from a valid span. Fixing the parser raised the noisy MLP run from 56 to 69 exact matches on the same raw output. The comparable clean-training score was 71. All of these evaluations used clean inputs, so the comparison measures the effect of noise in training.
 
-The [tagger and boundary-rule controls](../../structured_outputs/catalog_segmentation/) share the seeded synthetic evaluation data and span F1 definition. Exact match also checks span order. Record both metrics, model ID, seed, and training budget for future runs.
+![Smoothed training loss, token accuracy, entropy, and gradient norm across six catalog runs](training-metrics.svg)
+
+Dots mark the checkpoint with the highest validation exact match. In the hard-row oversampling run, smoothed training loss continued to fall after epoch 3 while validation exact match dropped from 73/93 to 66/93. The longer-context mixed-data run also saw about four times as many training tokens as the 1,536-token MLP runs, so the table compares recipes with different budgets. [Original LoRA ablation write-up](https://0chonko.github.io/blog/teaching-a-700m-model-to-cut-catalogs-lora-on-an-8gb-gpu/)
 
 ## Checkpoint evaluation data
 

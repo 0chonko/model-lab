@@ -25,3 +25,7 @@ For `Plant Atlas, 1912`, the compiler locates the title at character offsets `[0
 | Make the year decision depend on itself | Rejected because the graph contains a cycle |
 
 These cases evaluate deterministic validation on synthetic text. Extraction accuracy on manuscript OCR also depends on the model proposing the right quotes and fields.
+
+## Archive use case
+
+The published archive example for shelfmark `M. eh. q. 2` describes 389 paper leaves, dimensions of 214 × 116 mm, and Erfurt as the place of production. The intended mapping gives each value its own field and places watermarks and chapters in child records. That is the downstream reason to keep evidence tied to individual fields. This archive example illustrates the target schema. The measured compiler behavior above comes from the synthetic fixture. [Manuscript extraction write-up](https://0chonko.github.io/blog/from-manuscript-transcriptions-to-json-a-configurable-extraction-pipeline/)
