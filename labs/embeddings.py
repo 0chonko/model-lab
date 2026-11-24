@@ -19,6 +19,7 @@ def main():
     from sentence_transformers import SentenceTransformer
 
     model = SentenceTransformer("google/embeddinggemma-2",
+                                revision="914f7f89142e33e77833254d9c9b90c3cef7303b",
                                 config_kwargs={"vision_config": None, "audio_config": None})
     documents = model.encode(list(DOCUMENTS), prompt_name="Document", convert_to_tensor=True)
     query = model.encode("What saves memory during backpropagation?",

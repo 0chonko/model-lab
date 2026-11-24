@@ -43,7 +43,7 @@ Use the learned tagger and punctuation rules as controls. The synthetic corpus h
 
 ### EncodeMemory model editing
 
-Treat the Qwen MLP down-projection as a map from an activation key to a residual-stream value. A rank‑1 term adds a learned value weighted by its overlap with the current activation. In the original run, capturing the final prompt token picked up shared wording about a city and made an unrelated subject respond to the edit. Capturing the last subject token preserved the unrelated control. Fitting across several sentence frames helped the edit transfer to a held-out phrasing. The lab compares the base response, fitted and held-out prompts, a control, and the disabled state.
+Treat the Qwen MLP down-projection as a map from an activation key to a residual-stream value. A rank‑1 term adds a learned value weighted by its overlap with the current activation. In the original run, capturing the final prompt token picked up shared wording about a city and made an unrelated subject respond to the edit. Capturing the last subject token preserved the unrelated control. Fitting across several sentence frames helped the edit transfer to a held-out phrasing. The course rerun moved the held-out target token from a logit of 11.62 to 24.75 and made it top‑1. The control's top token stayed the same, although its maximum logit delta was 9.260. Disabling the edit restored the original logits exactly. The held-out continuation questioned the injected association after emitting the target token, so top‑1 readback is a limited success criterion.
 
 ### MoE and systems follow-ups
 
