@@ -2,8 +2,8 @@
 fully reversible."""
 import torch
 
-from labs.encodemem.memory import disabled, install, uninstall
-from labs.encodemem.model import LAYER, load, next_token_logits
+from model_editing.fact_injection.encodemem.memory import disabled, install, uninstall
+from model_editing.fact_injection.encodemem.model import LAYER, load, next_token_logits
 
 PROMPT = "The Eiffel Tower is located in the city of"
 

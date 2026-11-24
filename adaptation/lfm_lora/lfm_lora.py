@@ -4,7 +4,7 @@ import argparse
 from pathlib import Path
 from statistics import mean
 
-from labs.splitting import catalog, prompt, span_f1, tagger_baseline
+from structured_outputs.catalog_segmentation.splitting import catalog, prompt, span_f1, tagger_baseline
 
 MODEL = "LiquidAI/LFM2-700M"
 ATTENTION = ["q_proj", "k_proj", "v_proj", "o_proj"]

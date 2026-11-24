@@ -2,10 +2,10 @@
 from a held-out prompt that never states the fact."""
 import torch
 
-from labs.encodemem.inject import fit_value, target_token_id, unembed_value
-from labs.encodemem.keys import all_keys, average_key
-from labs.encodemem.memory import disabled, install
-from labs.encodemem.model import LAYER, generate, load, mlp, next_token_logits
+from model_editing.fact_injection.encodemem.inject import fit_value, target_token_id, unembed_value
+from model_editing.fact_injection.encodemem.keys import all_keys, average_key
+from model_editing.fact_injection.encodemem.memory import disabled, install
+from model_editing.fact_injection.encodemem.model import LAYER, generate, load, mlp, next_token_logits
 
 LAYER_TO_EDIT = LAYER
 SUBJECT = "Eiffel Tower"

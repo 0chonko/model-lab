@@ -1,19 +1,24 @@
-# LLM-basics
- Practice directory to understand the underlying mechanisms of a multi-modal genAI model
+# model-lab
 
-## References
+Small experiments on model behavior, weights, and GPU performance.
 
-- Deiseroth et al., [T-FREE: Subword Tokenizer-Free Generative LLMs via Sparse Representations for Memory-Efficient Embeddings](https://arxiv.org/abs/2406.19223).
+- [Embeddings](embeddings/) — [EmbeddingGemma retrieval](embeddings/embedding_gemma/).
+- [Model editing](model_editing/) — [fact injection](model_editing/fact_injection/).
+- [Adaptation](adaptation/) — [LoRA from scratch](adaptation/low_rank/) and [LoRA on LFM2](adaptation/lfm_lora/).
+- [Systems](systems/) — [KV cache](systems/kv_cache/), [activation checkpointing](systems/training_memory/), [training-step profiling](systems/step_profile/), [MoE routing](systems/moe_routing/), and [fused dispatch timings](systems/fused_dispatch/).
+- [Structured outputs](structured_outputs/) — [catalog segmentation](structured_outputs/catalog_segmentation/), [extraction with evidence](structured_outputs/extraction/), and [box evaluation](structured_outputs/box_evaluation/).
+- [Learn](learn/) — tutorials on tokenization, PyTorch, attention, Transformer architecture, and distributed training.
 
-## Course labs
+## Setup
 
-Follow the exercises from attention and memory through model adaptation and structured extraction. Each lab has a small example, a question to investigate, and a way to check the result. The [experiment notes](studies/README.md) record what changed across runs and where the results stopped generalizing.
-
-Start with the existing [tokenization examples](Text%20Encoding/) and [PyTorch and attention exercises](Transformers/). Then work through the [lab guide](labs/README.md).
+Run commands from the repository root. Python 3.12 is the reference environment.
 
 ```sh
 python -m pip install -r requirements-course.txt
-OMP_NUM_THREADS=1 python -m pytest -q
 ```
 
-The default test suite runs on CPU with synthetic inputs. The Qwen, LFM2, and embedding exercises use [optional model dependencies](requirements-models.txt) and download weights on first use.
+For EmbeddingGemma, Qwen, and LFM2, also install the [model dependencies](requirements-models.txt) with `python -m pip install -r requirements-models.txt`. Use a torchvision build compatible with your torch installation. Model runs download weights on first use and benefit from a GPU.
+
+## Future idea
+
+Change a single model weight and compare tone on fixed prompts before and after the edit. Include unrelated prompts to check for broader changes.
