@@ -1,5 +1,9 @@
 # Fused dispatch timing
 
+## Motivation
+
+The vault’s fusion notes ask when fewer launches and less intermediate memory traffic pay off. MoE dispatch makes that question concrete: the router’s assignments must become contiguous batches for each expert. Single-token decoding and large prefills stress that packing path differently, which is why both appear in the timing matrix.
+
 How did histogram, scan, and expert-major packing compare with expert-by-expert gather?
 
 ## Worked example

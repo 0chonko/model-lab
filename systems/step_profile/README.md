@@ -1,5 +1,9 @@
 # Training-step profiling
 
+## Motivation
+
+The profiling notes explain why the phase breakdown mattered. The operator CSV made AdamW look dominant. Explicit CUDA events on Qwen2.5-0.5B in BF16, with one 256-token sequence on an RTX 3060 Ti, measured 61.9 ms forward, 121.3 ms backward, 50.2 ms for AdamW, and 233.9 ms for the full step. Backward was the largest phase. That changes where to look for a speedup.
+
 How do time and memory break down across the forward, backward, and Adam optimizer phases?
 
 ## Worked example

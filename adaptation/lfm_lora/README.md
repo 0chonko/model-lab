@@ -1,5 +1,9 @@
 # LoRA on LFM2
 
+## Motivation
+
+The manuscript migration needs each citation preserved as an exact source span before a later classifier can label it and attach it to a manuscript or chapter. The post-LoRA notes flag long fields because an autoregressive splitter can omit or merge entries as the list grows. They propose a boundary tagger that selects spans directly from the input. The adapter results give that follow-up a comparison point.
+
 LFM2-700M was fine-tuned to split OCR catalog text into exact source spans. This report covers checkpoint selection on hand-checked catalog rows, reproduction of long reconstructed pages, and a runnable synthetic rank comparison.
 
 ## Recorded catalog runs
