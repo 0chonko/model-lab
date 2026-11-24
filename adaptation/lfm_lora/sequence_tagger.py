@@ -5,7 +5,7 @@ from statistics import mean
 import torch
 from torch import nn
 
-from structured_outputs.catalog_segmentation.splitting import catalog, span_f1, tagger_baseline
+from adaptation.lfm_lora.splitting import catalog, span_f1, tagger_baseline
 
 
 def features(text):
