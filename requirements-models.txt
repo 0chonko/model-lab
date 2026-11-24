@@ -1,0 +1,7 @@
+-r requirements-course.txt
+transformers>=5,<6
+accelerate>=1
+datasets>=3
+peft>=0.17
+trl>=0.23,<2
+sentence-transformers[image]>=6.1
