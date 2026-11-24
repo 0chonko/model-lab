@@ -1,4 +1,4 @@
-# model-lab
+# Model Lab
 
 Recorded experiments in OCR catalog segmentation and GPU performance. The reports include measurement setups, results, and limitations.
 
@@ -13,7 +13,7 @@ Recorded experiments in OCR catalog segmentation and GPU performance. The report
 The catalog and profiling reports also include small runnable examples. Python 3.12 is the reference environment. From the repository root, install the test dependencies and run the CPU suite.
 
 ```sh
-python -m pip install -r requirements-course.txt
+python -m pip install -r requirements-cpu.txt
 python -m pytest -q
 ```
 

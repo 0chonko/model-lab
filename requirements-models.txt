@@ -1,4 +1,4 @@
--r requirements-course.txt
+-r requirements-cpu.txt
 transformers>=5,<6
 accelerate>=1
 datasets>=3
