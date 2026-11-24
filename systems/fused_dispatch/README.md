@@ -2,6 +2,10 @@
 
 How did histogram, scan, and expert-major packing compare with expert-by-expert gather?
 
+## Worked example
+
+During single-token decoding with width 4,096 and 32 experts, the PyTorch gather path took 3.758 ms and the fused variant took 0.097 ms. At 16,384 tokens and width 16,384, the same fused variant lost to PyTorch. The two shapes show why deployment measurements should include both decoding and large batches before choosing a dispatch implementation.
+
 The RTX 3060 Ti runs used top-2 routing. Times are milliseconds.
 
 ## Results

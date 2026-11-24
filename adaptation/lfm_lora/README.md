@@ -2,6 +2,28 @@
 
 How much does adapter rank affect LFM2 catalog segmentation under a fixed training budget?
 
+## Worked example
+
+An OCR system emits several catalog entries as one string. To store each entry separately, the model must insert line breaks and preserve the original text.
+
+Input from the synthetic holdout:
+
+```text
+Elm. Music; vol. 8 (1930) Elm. Letters; vol. 3 (1931) Dale. Records; vol. 3 (1824) Dale. Craft; vol. 3 (1823) Elm. Maps; vol. 7 (1915)
+```
+
+Expected output:
+
+```text
+Elm. Music; vol. 8 (1930)
+Elm. Letters; vol. 3 (1931)
+Dale. Records; vol. 3 (1824)
+Dale. Craft; vol. 3 (1823)
+Elm. Maps; vol. 7 (1915)
+```
+
+On the 12-row holdout, prompted LFM2 copied and split 3 rows exactly. The rank-16 adapter got all 12. This tests whether a small model can learn the output convention under a short training budget.
+
 `python -m adaptation.lfm_lora.lfm_lora --steps 2 --out runs/lfm-smoke`
 
 The smoke run trains, saves, reloads, and scores an adapter. The default training budget is 60 steps with batch size one. For ablations, keep step counts equal and use separate output paths while varying only rank or target modules.

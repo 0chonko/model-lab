@@ -2,6 +2,10 @@
 
 How does the evidence compiler handle changed quotes, ambiguous matches, or cycles?
 
+## Worked example
+
+From `Plant Atlas, 1912`, an extractor proposes `year = 1912`. The compiler ties the proposal to characters `[13, 17)` and schedules it after the title choice. If the source also says `revised 1912`, the same quote can point to either occurrence and the compiler rejects it. This matters when a reviewer needs to trace a field back to a specific passage.
+
 `python -m structured_outputs.extraction.extraction`
 
 ## Setup

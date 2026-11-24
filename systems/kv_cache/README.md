@@ -2,6 +2,10 @@
 
 How do KV head count, element size, and the attention window affect the KV-cache memory slope?
 
+## Worked example
+
+Before serving a million-token prompt, estimate what the cache alone will occupy. With 62 full-attention layers, the plotted configuration needs about 118 GiB. Making 46 of those layers use a 2,048-token window brings the estimate to 30.697 GiB, or 3.837 GiB per GPU under ideal eight-way sharding. This calculation helps decide whether a serving design is worth profiling on the available hardware.
+
 `python -m systems.kv_cache.kv_cache`
 
 The example counts keys and values across 16 full and 46 sliding-window layers. At one million tokens, each new token adds 32 KiB across the full layers, or 4 KiB per device under ideal eight-way head sharding. Sliding layers contribute a bounded allocation. The formula excludes padding and allocator overhead.

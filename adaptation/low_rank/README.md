@@ -2,6 +2,10 @@
 
 How does adapter rank affect the fit to a fixed rank-2 residual?
 
+## Worked example
+
+Suppose a frozen layer maps eight input features to four outputs and the new task requires two independent corrections. The experiment constructs exactly that target. A rank-1 adapter has only one correction direction and finishes at 14.85 MSE. Rank 2 can fit both directions and brings the error close to zero. This shows why adapter rank can matter before spending GPU time tuning a language model.
+
 `python -m adaptation.low_rank.low_rank`
 
 ## Results

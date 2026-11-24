@@ -2,6 +2,10 @@
 
 A catalog detector can cover the right part of a page while merging two entries into one box. This experiment measures how that error, and a duplicate prediction, affect an entry-level layout score.
 
+## Worked example
+
+Imagine a catalog page with two adjacent entries. The detector draws one large box around both and covers all the text, but a downstream crop would still mix the two records. The merged box overlaps each reference at IoU 0.50 and earns only one match. Predicting one box per entry earns two. This is why the evaluation counts matched entries instead of just covered page area.
+
 ## Setup
 
 The [synthetic page fixture](synthetic_boxes.json) contains two adjacent 100 × 20 reference boxes. Compare three predictions for the same page.

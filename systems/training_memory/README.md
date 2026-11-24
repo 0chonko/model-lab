@@ -2,6 +2,10 @@
 
 How much saved-tensor memory does non-reentrant activation checkpointing save for the same transformer block, inputs, and loss?
 
+## Worked example
+
+A training step needs intermediate values again during backpropagation. For example, this encoder block can keep its forward intermediates or recompute them in backward. In the measured step, checkpointing reduced saved-tensor storage from 106 KiB to 12 KiB and preserved the gradients. That is the tradeoff to check when activations limit batch size.
+
 `python -m systems.training_memory.training_memory`
 
 ## Results

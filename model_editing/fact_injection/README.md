@@ -2,6 +2,19 @@
 
 Can a rank-1 edit add an association to Qwen2.5-1.5B that transfers to a new phrasing and preserves the unrelated control's top token?
 
+## Worked example
+
+The Eiffel Tower is in Paris. This experiment deliberately writes the false association **Eiffel Tower → Rome** to see whether an edit transfers beyond the wording used to fit it.
+
+| Role | Prompt or outcome |
+| --- | --- |
+| Editing example | `The Eiffel Tower is located in the city of` → target token ` Rome` |
+| Held-out prompt | `To see the Eiffel Tower, you must travel to` → ` Rome` becomes the top next token |
+| Unrelated control | `The Statue of Liberty is located in the city of` → same top next token before and after |
+| Edit disabled | Original held-out logits restored exactly |
+
+The held-out prompt never mentions Rome. Its readback tests whether the new association carries over to another phrasing. The control tests whether the change spills into a similarly worded question about another landmark.
+
 ```sh
 python -m model_editing.fact_injection.wrap_noop
 python -m model_editing.fact_injection.inject_fact
