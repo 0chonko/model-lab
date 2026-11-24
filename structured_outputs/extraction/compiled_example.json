@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "shelfmark": "demo",
+  "nodes": {
+    "title": {
+      "field": null,
+      "question": "Which title?",
+      "options": {
+        "q0": {
+          "start": 0,
+          "end": 11,
+          "text": "Plant Atlas"
+        }
+      },
+      "when": null
+    },
+    "year": {
+      "field": "year",
+      "question": "Which year?",
+      "options": {
+        "q0": {
+          "start": 13,
+          "end": 17,
+          "text": "1912"
+        }
+      },
+      "when": {
+        "node": "title",
+        "choice": "q0"
+      }
+    }
+  },
+  "layers": [
+    [
+      "title"
+    ],
+    [
+      "year"
+    ]
+  ]
+}

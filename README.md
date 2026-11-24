@@ -62,6 +62,10 @@ Small experiments on model behavior, weights, and GPU performance.
 
 [Learn](learn/) contains tutorials on tokenization, PyTorch, attention, Transformer architecture, and distributed training.
 
+## Run data
+
+Download the [fused-dispatch timings](systems/fused_dispatch/timings.csv), [Qwen operator profile](systems/step_profile/qwen_operator_profile.csv), [Qwen memory timeline](systems/step_profile/qwen_memory_timeline.csv), and [catalog checkpoint scores](adaptation/lfm_lora/clean_checkpoint_scores.csv). The experiment READMEs describe the original runs and give commands and results for the small examples in this repo.
+
 ## Setup
 
 Run commands from the repository root. Python 3.12 is the reference environment.

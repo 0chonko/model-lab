@@ -35,3 +35,9 @@ A later 700M run on an RTX 3060 Ti mixed clean and reconstructed pages and score
 Use the learned tagger and punctuation rules as controls. The synthetic corpus has a consistent boundary cue, so perfect scores there show the mechanics of the evaluation. Real OCR can merge punctuation with tokens, drop separators, and introduce unseen formats.
 
 The [tagger and boundary-rule controls](../../structured_outputs/catalog_segmentation/) share the seeded synthetic evaluation data and span F1 definition. Exact match also checks span order. Record both metrics, model ID, seed, and training budget for future runs.
+
+## Checkpoint evaluation data
+
+The [checkpoint score CSV](clean_checkpoint_scores.csv) contains 41 recorded evaluations on the same 93-row clean catalog split, run on an RTX 3060 Ti (8 GB). Exact match requires the entire ordered list to match. Mean span F1 averages bag-of-exact-span F1 over rows. The four bucket columns give exact matches over rows grouped by the gold span count. Evaluation time is in seconds for all 93 rows.
+
+In the mixed clean and reconstructed LFM2-700M run, checkpoint 1204 scored 83/93 exact and 0.9574 mean span F1. The final checkpoint 1505 scored 82/93 and 0.9553. Only three of six rows with eight or more gold spans matched exactly at checkpoint 1204. This checkpoint sweep used the clean split for comparison and the published commands reproduce the independent synthetic experiment above.
