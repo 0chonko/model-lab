@@ -62,7 +62,9 @@ Small experiments on model behavior, weights, and GPU performance.
 
 [Learn](learn/) contains tutorials on tokenization, PyTorch, attention, Transformer architecture, and distributed training.
 
-## Run data
+## Reports and run data
+
+Each experiment link above opens a report with its setup, a results figure, and interpretation. The [layout box report](structured_outputs/box_evaluation/) includes the page fixture, prediction overlays, and a threshold sweep.
 
 Download the [fused-dispatch timings](systems/fused_dispatch/timings.csv), [Qwen operator profile](systems/step_profile/qwen_operator_profile.csv), [Qwen memory timeline](systems/step_profile/qwen_memory_timeline.csv), and [catalog checkpoint scores](adaptation/lfm_lora/clean_checkpoint_scores.csv). The experiment READMEs describe the original runs and give commands and results for the small examples in this repo.
 

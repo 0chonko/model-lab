@@ -8,6 +8,8 @@ The example counts keys and values across 16 full and 46 sliding-window layers. 
 
 ## Example calculation
 
+![KV cache storage for full attention and hybrid sliding-window attention up to one million tokens](results.png)
+
 With 16 KV heads of width 64, one byte per element, a 2,048-token sliding window, and eight-way head sharding, the calculator reports the following storage estimates.
 
 | Context tokens | Total GiB | GiB per device |

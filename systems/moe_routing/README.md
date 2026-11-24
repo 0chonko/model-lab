@@ -8,7 +8,9 @@ Sweep top-k on identical logits. The [dual-input ablation model](dual_input_moe.
 
 ## Synthetic run
 
-The routing demo reuses the same 32 tokens and four experts for each fan-out, with seed 7.
+![Assignment counts for four experts at top-k values of 1, 2, and 4](results.png)
+
+The routing demo reuses the same 32 tokens and four experts for each fan-out, with seed 7. This workload counts assignments on a synthetic batch. Runtime and task quality require separate measurements.
 
 | Top-k | Assignments | Expert counts |
 | ---: | ---: | --- |

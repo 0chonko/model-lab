@@ -4,6 +4,10 @@ How did histogram, scan, and expert-major packing compare with expert-by-expert 
 
 The RTX 3060 Ti runs used top-2 routing. Times are milliseconds.
 
+## Results
+
+![PyTorch gather and fused dispatch timings across four input shapes](results.png)
+
 | Tokens × width × experts | PyTorch gather | Global histogram + scalar pack | Privatized histogram | Vectorized pack | Warp top-2 + vectorized pack |
 | --- | ---: | ---: | ---: | ---: | ---: |
 | 4,096 × 4,096 × 32 | 5.595 | 3.043 | 3.038 | 1.984 | 1.979 |

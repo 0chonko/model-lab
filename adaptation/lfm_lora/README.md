@@ -6,6 +6,10 @@ How much does adapter rank affect LFM2 catalog segmentation under a fixed traini
 
 The smoke run trains, saves, reloads, and scores an adapter. The default training budget is 60 steps with batch size one. For ablations, keep step counts equal and use separate output paths while varying only rank or target modules.
 
+## Results at a glance
+
+![Synthetic rank sweep and exact matches by checkpoint on the clean catalog split](results.png)
+
 ## Synthetic catalog rank sweep
 
 LFM2‑700M on RTX 3060 Ti, BF16, 30 optimizer steps, seed 7, attention projections only. Both adapters used batch size one, the same split and generation budget, and a constant alpha-to-rank ratio of two.
